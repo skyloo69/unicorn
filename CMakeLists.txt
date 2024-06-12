@@ -1320,6 +1320,9 @@ target_compile_options(unicorn-common PRIVATE
     ${UNICORN_COMPILE_OPTIONS}
 )
 
+# necessary to prevent the redefinition of the symbol crc32 on some compilers
+target_compile_definitions(unicorn-common PRIVATE crc32=uc_crc32 gen_helper_crc32=gen_helper_uc_crc32)
+
 target_compile_options(unicorn PRIVATE
     ${UNICORN_COMPILE_OPTIONS}
 )
